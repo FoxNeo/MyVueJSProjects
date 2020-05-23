@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de útiles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div id="shopping-list">
+            <div class="hrader">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button v-if="state === 'default'" class="btn btn-primary" @click="changeState('edit')">Add</button>
+                <button v-else class="btn btn-cancel" @click="changeState('default')">Cancel</button>
+            </div>
+            <div v-if="state === 'edit'">
+                <input type="text" placeholder="Add new" v-model="newUtil" v-on:keyup.enter="saveItem">
+                <button class="btn btn-primary" v-bind:disabled="newUtil.length === 0" v-on:click="saveItem">+ Add new
+                    item</button>
+            </div>
+            <ul>
+                <li v-for=" elem in utils" class="lineThrought"> {{ elem }}</li>
+            </ul>
+            <p v-if="utils.length === 0">List is empty</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
