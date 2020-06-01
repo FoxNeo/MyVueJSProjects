@@ -1,4 +1,4 @@
-# 02-generador-notas
+# notes-management
 
 > A Vue.js project
 
